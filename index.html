@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ASCII Hearts</title>
+
+  <!-- SF Mono / Menlo fallbacks -->
+  <style>
+    @font-face {
+      font-family: 'SFMono';
+      src: local('SF Mono'), local('SFMono-Regular');
+    }
+
+    body {
+      margin: 0;
+      background: #141313;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* iPhone 17 Pro frame (условный) */
+    /* 🔧 ИЗМЕНЕНО: frame теперь адаптивный, масштабируется под экран */
+    .frame {
+      width: min(393px, 100vw);
+      aspect-ratio: 393 / 852; /* сохраняем форму iPhone */
+      height: 900px;
+      border-radius: 48px;
+      background: #141313;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .love-text {
+      position: absolute;
+      font-family: 'SFMono', monospace;
+      font-size: 20px;
+      color: #E777DF;
+      
+      opacity: 0.9;
+    }
+
+    /* 🔧 ИЗМЕНЕНО: размеры через em — масштабируются вместе с frame */
+    .ascii-heart {
+      position: absolute;
+      font-family: Menlo, monospace;
+      font-size: 1em; /* базовый размер */
+      line-height: 1em;
+      color: #E777DF;
+      white-space: pre;
+      animation: breathe 4s ease-in-out infinite;
+      transform-origin: center;
+    }
+
+    /* 🔧 ИЗМЕНЕНО: фоновые сердца тоже масштабируемые */
+    .bg-heart {
+      position: absolute;
+      font-family: Menlo, monospace;
+      font-size: 4px; /* было 6px */
+      line-height: 4px;
+      color: #E777DF;
+      opacity: 0.3;
+      white-space: pre;
+      animation: floatBg 18s linear infinite;
+    }
+
+    @keyframes floatBg {
+      from { transform: translateY(120%); }
+      to { transform: translateY(-140%); }
+    }
+
+    .ascii-heart .inner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 6px;
+      font-family: 'SFMono', monospace;
+      opacity: 0.7;
+      animation: breatheInner 4s ease-in-out infinite;
+    }
+
+    /* Анимации */
+    @keyframes breathe {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes breatheInner {
+      0% { transform: translate(-50%, -50%) scale(0.95); }
+      50% { transform: translate(-50%, -50%) scale(1.05); }
+      100% { transform: translate(-50%, -50%) scale(0.95); }
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(-120%); }
+    }
+
+    /* Задержки, чтобы не всё одновременно */
+    .d1 { animation-delay: 0s; }
+    .d2 { animation-delay: .5s; }
+    .d3 { animation-delay: 1s; }
+    .d4 { animation-delay: 0.5s; }
+
+  </style>
+</head>
+<body>
+  <div class="frame">
+
+    <!-- LOVE YOU -->
+    <div class="love-text d1" style="left:20px; top:140px;">love you ^-^</div>
+    <div class="love-text d2" style="right:30px; top:280px;">love you!</div>
+    <div class="love-text d3" style="left:40px; top:520px;">love you ♥-♥</div>
+    <div class="love-text d4" style="right:40px; top:650px;">love you ~</div>
+
+    <!-- ASCII HEART -->
+    <div class="ascii-heart d1" style="left:30px; top:150px; font-size:10px; line-height:10px;">
+<pre>  
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+      <pre class="inner" style="font-size: 12px; top:90px; line-height: 12px;">
+  ,d88b.d88b,
+  88888888888
+  `Y8888888Y'
+    `Y888Y'    
+      `Y'</pre>
+    </div>
+
+    <div class="ascii-heart d1" style="right:30px; top:350px; font-size:10px; line-height:10px;">
+<pre>  
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+      <pre class="inner" style="font-size:12px; top:90px; line-height: 12px;">
+  ,d88b.d88b,
+  88888888888
+  `Y8888888Y'
+    `Y888Y'    
+      `Y'</pre>
+
+    </div>
+<div class="ascii-heart d1" style="left:30px; top:550px; font-size:10px; line-height:10px;">
+<pre>  
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+      <pre class="inner" style="font-size: 12px; top:90px; line-height: 12px;">
+  ,d88b.d88b,
+  88888888888
+  `Y8888888Y'
+    `Y888Y'    
+      `Y'</pre>
+    </div>
+    
+
+      <!-- BACKGROUND ASCII HEARTS -->
+    
+
+<pre class="bg-heart" style="left:10%; bottom: 85%; opacity:0.5; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+
+</pre>
+
+<pre class="bg-heart" style="left:70%; bottom: 90%; opacity:0.5 ; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+
+</pre>
+
+<pre class="bg-heart" style="left:50%; bottom: 75%; opacity:0.5 ; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+
+</pre>
+
+<pre class="bg-heart" style="left:10%; bottom: 65%; opacity:0.5; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+
+</pre>
+
+<pre class="bg-heart" style="left:40%; bottom: 55%; opacity:0.5 ; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+
+</pre>
+
+<pre class="bg-heart" style="left:70%; bottom: 65%; opacity:0.5 ; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+
+</pre>
+
+<pre class="bg-heart" style="left:50%; bottom: 45%; opacity:0.5; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+
+</pre>
+
+
+<pre class="bg-heart" style="left:10%; bottom: 15%; opacity:0.5 ; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+
+</pre>
+
+<pre class="bg-heart" style="left:70%; bottom: 35%; opacity:0.5 ; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+
+</pre>
+
+<pre class="bg-heart" style="left:25%; bottom: 35%; opacity:0.5; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+<pre class="bg-heart" style="left:5%; bottom: 45%; opacity:0.5; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+</pre>
+
+<pre class="bg-heart" style="left:65%; bottom: 20%; opacity:0.5 ; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+
+</pre>
+
+<pre class="bg-heart" style="left:45%; bottom: 25%; opacity:0.5 ; animation-delay:1s;">
+       
+   ,ad8PPPP88b,     ,d88PPPP8ba,
+  d8P"      "Y8b, ,d8P"      "Y8b
+ dP'           "8a8"           `Yd
+ 8(              "              )8
+ I8                             8I
+  Yb,                         ,dP
+   "8a,                     ,a8"
+     "8a,                 ,a8"
+       "Yba             adP"   
+         `Y8a         a8P'
+           `88,     ,88'
+             "8b   d8"
+              "8b d8"
+               `888'</pre>
+
+</pre>
+ 
+
+
+
+  </div>
+</body>
+</html>
